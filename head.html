@@ -1,0 +1,161 @@
+<!-- php:$jsfile = $js ? "js/global.js,".$js : "js/global.js" -->
+<!-- head title=$title css="css/index.css,css/amazeui.css,css/common.min.css,css/index.min.css,css/style.css,artdialog.css"   js=$jsfile html5=true -->
+<body>
+<div class="layout">
+    <div class="layout-header am-hide-sm-only">
+      <div class="topbar">
+        <div class="container">
+          <div class="am-g">
+            <div class="am-u-md-3">
+              <div class="topbar-left">
+                <i class="am-icon-globe"></i>
+                <div class="am-dropdown" data-am-dropdown>
+                  <button class="am-btn am-btn-primary am-dropdown-toggle" data-am-dropdown-toggle>Language <span class="am-icon-caret-down"></span></button>
+                  <ul class="am-dropdown-content">
+                    <li><a href="#">English</a></li>
+                    <li class="am-divider"></li>
+                    <li><a href="#">Chinese</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="am-u-md-9">
+              <div class="topbar-right am-text-right am-fr">
+                Follow us
+                <i class="am-icon-facebook"></i>
+                <i class="am-icon-twitter"></i>
+                <i class="am-icon-google-plus"></i>
+                <i class="am-icon-pinterest"></i>
+                <i class="am-icon-instagram"></i>
+                <i class="am-icon-linkedin"></i>
+                <i class="am-icon-youtube-play"></i>
+                <i class="am-icon-rss"></i>
+
+   <!--<a href="{url ctrl=cart/}" title="购物车">购物车 <span class="red">(<span id="head_cart_num">0</span>)</span></a> -->
+				<!-- if $session.user_id -->
+				<a href="{url ctrl=usercp/}">个人中心</a> 
+				<a href="javascript:$.user.logout('{$session.user_name}');void(0)">退出</a>
+				<!-- else -->
+				<a href="{url ctrl=login/}">登录</a> | <a href="{url ctrl=register/}">注册</a>
+				<!-- /if -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     
+
+
+      <div class="header-box" data-am-sticky>
+          <div class="container">
+            <div class="header">
+              <div class="am-g">
+                <div class="am-u-lg-2 am-u-sm-12">
+                  <div class="logo">
+                    <a href="{$sys.url}" title="{$config.title}"><img src="{$config.logo}" alt="{$config.title}" /></a>
+                  </div>
+                </div>
+                <div class="am-u-md-10">
+                  <div class="header-right am-fr">
+                    <div class="header-contact">
+                     <!-- include tpl=block/contact showmore=1 -->
+                    </div>
+                    <a href="{$contactus.url}" class="contact-btn">
+                      <button type="button" class="am-btn am-btn-secondary am-radius">联系我们</button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <div class="nav-contain">
+          <div class="nav-inner">
+            <ul class="am-nav am-nav-pills am-nav-justify">
+			 <!-- php:$list = phpok('menu') -->
+			<!-- loop from=$list.rslist key=$key value=$value id=mindex -->
+              <li {if $highlight == $mindex.num || $menutitle == $value.title} class=""{/if}>
+                <a  {if $value.sonlist} class=""{/if} href="{$value.url}" title="{$value.title}" target="{$value.target}">{$value.title}</a>
+                <ul class="sub-menu">
+                 <!-- loop from=$value.sonlist key=$k value=$v -->	
+                  <li class="menu-item"><a href="{$v.url}" title="{$v.title}" target="{$v.target}">{$v.title}</a></li>
+                  <!-- /loop -->
+                </ul>
+              </li>
+				<!-- /loop -->
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="m-header">
+      <div class="am-g am-show-sm-only">
+        <div class="am-u-sm-2">
+          <div class="menu-bars">
+            <a href="#doc-oc-demo1" data-am-offcanvas="{effect: 'push'}"><i class="am-menu-toggle-icon am-icon-bars"></i></a>
+            <nav data-am-widget="menu" class="am-menu  am-menu-offcanvas1" data-am-menu-offcanvas >
+            <a href="javascript: void(0)" class="am-menu-toggle"></a>
+
+            <div class="am-offcanvas" >
+              <div class="am-offcanvas-bar">
+              <ul class="am-menu-nav am-avg-sm-1">
+            <!-- php:$list = phpok('menu') -->
+			<!-- loop from=$list.rslist key=$key value=$value id=mindex -->      
+                  <li {if $value.sonlist } class="am-parent"{/if} >
+                    <a {if $value.sonlist} class=""{/if} href="{$value.url}" title="{$value.title}" target="{$value.target}">{$value.title}</a>
+
+                      <ul class="am-menu-sub am-collapse ">
+                      	<!-- loop from=$value.sonlist key=$k value=$v -->	
+                          <li class="">
+                            <a href="{$v.url}" title="{$v.title}" target="{$v.target}" class="" >{$v.title}</a>
+                          </li>
+						<!-- /loop -->
+                      </ul>
+
+                  </li>
+            <!-- /loop -->     
+
+                  <li class="am-parent">
+                    <a href="" class="nav-icon nav-icon-globe" >Language</a>
+                      <ul class="am-menu-sub am-collapse  ">
+                          <li>
+                            <a href="#" >English</a>
+                          </li>
+                          <li class="">
+                            <a href="#" >Chinese</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li class="nav-share-contain">
+                    <div class="nav-share-links">
+                      <i class="am-icon-facebook"></i>
+                      <i class="am-icon-twitter"></i>
+                      <i class="am-icon-google-plus"></i>
+                      <i class="am-icon-pinterest"></i>
+                      <i class="am-icon-instagram"></i>
+                      <i class="am-icon-linkedin"></i>
+                      <i class="am-icon-youtube-play"></i>
+                      <i class="am-icon-rss"></i>
+                    </div>
+                  </li>
+                  <li class=""><a href="{url ctrl=login/}" class="" >登录</a></li>
+                  <li class=""><a href="{url ctrl=register/}" class="" >注册</a></li>
+              </ul>
+
+              </div>
+            </div>
+          </nav>
+
+          </div>
+        </div>
+        <div class="am-u-sm-5 am-u-end">
+          <div class="m-logo">
+            <a href=""><img src="assets/images/logo.png" alt=""></a>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+
